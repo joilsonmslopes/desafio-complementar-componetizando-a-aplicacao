@@ -1,6 +1,7 @@
 import { Star, Clock } from 'react-feather';
 
 import '../styles/movie-card.scss';
+import { useMemo } from 'react';
 
 interface MovieCardProps {
   title: string;
@@ -10,6 +11,15 @@ interface MovieCardProps {
 }
 
 export function MovieCard(props: MovieCardProps) {
+
+  const StarIcon = useMemo(() => {
+    return <Star />
+  }, [])
+
+  const ClockIcon = useMemo(() => {
+    return <Clock />
+  }, [])
+
   return (
     <div className="movie-card">
       <img
@@ -22,11 +32,11 @@ export function MovieCard(props: MovieCardProps) {
           <span>{props.title}</span>
           <div className="meta">
             <div>
-              <Star /> {props.rating}
+              {StarIcon} {props.rating}
             </div>
 
             <div>
-              <Clock /> {props.runtime}
+              {ClockIcon} {props.runtime}
             </div>
           </div>
         </div>
